@@ -9,7 +9,13 @@
       <%= message.body %>
     </div>
     <div class="actions">
-      <%= link_to "読んだ! #{message.like_count}", '#', class: 'reply' %>
-    </div>
+  <%= tag.div class: 'ui button mini blue label',
+              data: { reflex: 'click->MessagesReflex#like',
+                      id: message.id,
+                      controller: 'stimulus-reflex',
+                      action: 'click->stimulus-reflex#__perform' } do %>
+    読んだ! <%= tag.span message.like_count, id: "message-#{message.id}-likes" %>
+  <% end %>
+</div>
   </div>
 </div>
